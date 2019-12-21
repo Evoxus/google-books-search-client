@@ -3,18 +3,18 @@ import './ResultsItem.css'
 
 export default function ResultsItem(props) {
   const data = props.data.volumeInfo
-  const shortDescription = data.description.slice(0, 200) + '...';
+  const shortDescription = data.description ? data.description.slice(0, 200) + '...' : 'This item is missing a description';
   return (
     <div>
+      <h2>{data.title}</h2>
       <div>
         <img src={data.imageLinks.smallThumbnail} alt='Book Cover'></img>
       </div>
       <div>
-        <h2>{data.title}</h2>
-        <p>{data.authors.join(' ')}</p>
+        {data.authors && <p>{data.authors.join(' ')}</p>}
         <div>
-          {props.data.saleInfo.listPrice && <p>{props.data.saleInfo.listPrice.amount}</p>}
-          {props.data.saleInfo.listPrice && <p>{props.data.saleInfo.listPrice.currencyCode}</p>}
+          {props.data.saleInfo.listPrice && <span>{props.data.saleInfo.listPrice.amount} </span>}
+          {props.data.saleInfo.listPrice && <span> {props.data.saleInfo.listPrice.currencyCode}</span>}
         </div>
         <p>{shortDescription}</p>
       </div>
