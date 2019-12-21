@@ -23,13 +23,15 @@ class App extends Component {
     console.log(e.target.searchTerm.value);
     e.preventDefault();
     this.setState({
-      searchTerm: e.target.searchTerm.value
+      searchTerm: e.target.searchTerm.value,
+      bookType: e.target.bookType.value,
+      printType: e.target.printType.value
     }, this.handleSearch)
   }
 
   handleSearch = () => {
     const APIKEY = 'AIzaSyCQmt3V0v1p0gatC_b_7hEwk310Uo-Zwm8';
-    const url = `https://www.googleapis.com/books/v1/volumes?q=${this.state.searchTerm}&key=${APIKEY}`;
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${this.state.searchTerm}&filter=${this.state.bookType}&printType=${this.state.printType}&key=${APIKEY}`;
 
     fetch(url)
       .then(res => {
@@ -57,7 +59,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <form onSubmit={(e) => this.handleSubmit(e)}>
-          <SearchBar handleSubmit={this.handleSubmit}/>
+          <SearchBar />
           <FilterBar />
         </form>
         <section>
