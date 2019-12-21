@@ -5,11 +5,11 @@ export default function ResultsItem(props) {
   const data = props.data.volumeInfo
   const shortDescription = data.description.slice(0, 200) + '...';
   return (
-    <div>
-      <div>
+    <div className='resultItem'>
+      <div className='img-container'>
         <img src={data.imageLinks.smallThumbnail} alt='Book Cover'></img>
       </div>
-      <div>
+      <div className=''>
         <h2>{data.title}</h2>
         <p>{data.authors.join(' ')}</p>
         <div>

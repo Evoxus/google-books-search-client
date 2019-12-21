@@ -3,7 +3,7 @@ import './FilterBar.css';
 
 export default function FilterBar(props) {
   return (
-      <div>
+      <div className='filterBar'>
         <label htmlFor='printTypeSelect'>Print Type: </label>
         <select name='printType' id='printTypeSelect'>
           <option value=''>--Please choose an option--</option>
